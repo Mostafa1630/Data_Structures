@@ -38,6 +38,23 @@ public class LinkedList {
         }
     }
 
+
+    public void addAfterValue(int targetValue, int newValue) {
+        Node current = head;
+        while (current != null) {
+            if (current.data == targetValue) {
+                Node newNode = new Node(newValue);
+                newNode.next = current.next;
+                current.next = newNode;
+                size++; // Increase the size of the linked list
+                return; // Exit after adding the new node
+            }
+            current = current.next;
+        }
+        System.out.println("Value " + targetValue + " not found in the list.");
+    }
+
+
     public void set(int index, int value) {
         if (index >= 0 && index < size) {
             Node current = head;
