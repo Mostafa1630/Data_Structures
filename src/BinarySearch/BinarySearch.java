@@ -75,7 +75,7 @@ public class BinarySearch {
         if(isEmpty()){
             return 0;
         }
-        if(current.left != null){
+        while(current.left != null){
             current = current.left;
 
         }
@@ -87,10 +87,56 @@ public class BinarySearch {
         if(isEmpty()){
             return 0;
         }
-        if(current.right != null){
+        while(current.right != null){
             current = current.right;
 
         }
         return current.data;
+    }
+
+//    to display array {inOrder , preOrder , PostOrder}
+    // inOrder ==> parent in medium
+    // preOrder ==> parent in frist
+    // postOrder ==> parent in last
+
+    void InOrder(Node localRoot){
+     if(localRoot != null){
+         InOrder(localRoot.left);
+         System.out.print(localRoot.data + " ");
+         InOrder(localRoot.right);
+     }
+    }
+
+    void PreOrder(Node localRoot){
+        if(localRoot != null){
+            System.out.print(localRoot.data + " ");
+            PreOrder(localRoot.left);
+            PreOrder(localRoot.right);
+        }
+    }
+
+    void PostOrder(Node localRoot){
+        if(localRoot != null){
+            PostOrder(localRoot.right);
+            PostOrder(localRoot.left);
+            System.out.print(localRoot.data + " ");
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("mostafa");
+        BinarySearch bs = new BinarySearch();
+        bs.insert(10);
+        bs.insert(5);
+        bs.insert(20);
+        bs.insert(30);
+        System.out.println( bs.search(30));
+        System.out.println( bs.FindMax());
+        System.out.println( bs.FindMin());
+        bs.InOrder(bs.root);
+        System.out.println( " ");
+        bs.PreOrder(bs.root);
+        System.out.println( " ");
+        bs.PostOrder(bs.root);
     }
 }
